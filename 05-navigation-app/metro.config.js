@@ -1,6 +1,7 @@
-const { getDefaultConfig } = require("expo/metro-config");
+const { getDefaultConfig } = require('expo/metro-config');
 const { withNativeWind } = require('nativewind/metro');
- 
-const config = getDefaultConfig(__dirname)
- 
-module.exports = withNativeWind(config, { input: './src/app/global.css' })
+
+// eslint-disable-next-line no-undef
+const config = getDefaultConfig(__dirname);
+
+module.exports = withNativeWind(config, { input: './app/global.css' });
