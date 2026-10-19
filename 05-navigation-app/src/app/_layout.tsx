@@ -2,6 +2,7 @@ import "./global.css"
 import {Slot, SplashScreen, Stack} from 'expo-router'
 import { useFonts } from 'expo-font'
 import { useEffect } from "react";
+import { GestureHandlerRootView } from 'react-native-gesture-handler'
 
 // Se llama una sola vez, al cargar el archivo, no en cada render
 SplashScreen.preventAutoHideAsync();
@@ -26,10 +27,14 @@ const RootLayout = () => {
     return null;
   }
 
-
   return (
-    <Slot />
-  );
+    <GestureHandlerRootView style={{ flex: 1 }}>
+      <Slot />
+    </GestureHandlerRootView>
+  )
+  // return (
+  //   <Slot />
+  // );
 }
 
 export default RootLayout
