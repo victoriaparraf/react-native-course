@@ -1,6 +1,6 @@
 import { Redirect, useLocalSearchParams } from 'expo-router'
 import { View, Text } from 'react-native'
-import { products } from '../../../../store/products.store';
+import { products } from '../../../../../store/products.store';
 
 const ProductsScreen= () => {
 
