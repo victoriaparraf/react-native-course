@@ -8,6 +8,10 @@
       ],
       "@/assets/*": [
         "./assets/*"
+      ],
+      // @react-native/virtualized-lists 0.86.3 importa sus propios tipos por una ruta que su package.json bloquea
+      "@react-native/virtualized-lists/Lists/*": [
+        "./node_modules/@react-native/virtualized-lists/Lists/*"
       ]
     }
   },
