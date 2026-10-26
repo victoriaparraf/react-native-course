@@ -1,4 +1,4 @@
-import { View, Text, ActivityIndicator } from 'react-native'
+import { View, Text, ActivityIndicator, ScrollView } from 'react-native'
 import React from 'react'
 import { useMovies } from '../../../presentation/hooks/useMovies'
 import { useSafeAreaInsets } from 'react-native-safe-area-context'
@@ -8,7 +8,7 @@ import MovieHorizontalList from '../../../presentation/components/movies/MovieHo
 const HomeScreen = () => {
 
     const safeArea = useSafeAreaInsets();
-    const { nowPlayingQuery, popularQuery } = useMovies();
+    const { nowPlayingQuery, popularQuery, topRatedQuery, upcomingQuery } = useMovies();
 
     if (nowPlayingQuery.isLoading) {
         return (
@@ -19,17 +19,34 @@ const HomeScreen = () => {
     }
 
     return (
-        <View className="mt-2" style={{ paddingTop: safeArea.top }}>
-            <Text className="text-3xl font-bold px-4 mb-2">Home Screen</Text>
-            {/* Carousel */}
-            <MainSlideshow movies={nowPlayingQuery.data ?? []} />
+        <ScrollView>
+            <View className="mt-2 pb-10" style={{ paddingTop: safeArea.top }}>
+                <Text className="text-3xl font-bold px-4 mb-2">Home Screen</Text>
+                {/* Carousel */}
+                <MainSlideshow 
+                    movies={nowPlayingQuery.data ?? []} 
+                />
 
-            {/* Popular Movies */}
-            <MovieHorizontalList 
-                title="Populares"
-                movies={popularQuery.data ?? []}
-            />
-        </View>
+                {/* Popular Movies */}
+                    <MovieHorizontalList 
+                        title="Populares"
+                        movies={popularQuery.data ?? []}
+                        className="mb-5"
+                    />
+
+                <MovieHorizontalList 
+                    title="Mejor calificadas"
+                    movies={topRatedQuery.data ?? []}
+                    className="mb-5"
+                />
+
+                <MovieHorizontalList 
+                    title="Proximamente"
+                    movies={upcomingQuery.data ?? []}
+                    className="mb-5"
+                />
+            </View>
+        </ScrollView>
     )
 }
 
